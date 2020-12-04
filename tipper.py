@@ -241,14 +241,29 @@ def new_user_register(userid):
 
 
 def menu():
+    # markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
+    # btn1 = types.KeyboardButton(button1)
+    # btn2 = types.KeyboardButton(button2)
+    # btn3 = types.KeyboardButton(button3)
+    # btn4 = types.KeyboardButton(button4)
+    # markup.add(btn1)
+    # markup.add(btn2, btn3)
+    # markup.add(btn4)
+
     markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
-    btn1 = types.KeyboardButton(button1)
-    btn2 = types.KeyboardButton(button2)
-    btn3 = types.KeyboardButton(button3)
-    btn4 = types.KeyboardButton(button4)
-    markup.add(btn1)
-    markup.add(btn2, btn3)
-    markup.add(btn4)
+    btn1 = types.KeyboardButton(exchangeButton)
+    btn2 = types.KeyboardButton(walletButton)
+    btn3 = types.KeyboardButton(freetokensButton)
+    btn4 = types.KeyboardButton(uniREAPButton)
+    btn5 = types.KeyboardButton(listTokensButton)
+    btn6 = types.KeyboardButton(groupAdminsButton)
+    btn7 = types.KeyboardButton(helpButton)
+    btn8 = types.KeyboardButton(aboutButton)
+    markup.add(btn1, btn2)
+    markup.add(btn3, btn4)
+    markup.add(btn5, btn6)
+    markup.add(btn7, btn8)
+
     return markup
 
 def withdraw_menu():
@@ -267,6 +282,25 @@ def cancel_menu():
     markup.add(btn4)
     return markup
 #=================================================================             defs             ==================================================================##
+
+def exchange_menu():
+    markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
+    btn1 = types.KeyboardButton(convertButton)
+    btn2 = types.KeyboardButton(swapButton)
+    btn3 = types.KeyboardButton(backButton)
+    btn4 = types.KeyboardButton(mainMenuButton)
+    markup.add(btn1, btn2)
+    markup.add(btn3, btn4)
+
+    return markup
+
+# exchange ================================================================================#
+def exchange(message):
+    try:
+        bot.send_message(message.chat.id, "Swap Tokens that are listed with a simple chat command. Transaction-fees are paid for with the existing REAP-Tokens in your wallet, make sure you have enough!", parse_mode="html", reply_markup=exchange_menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
 
 
 # balance ================================================================================#
@@ -923,6 +957,14 @@ def buttons_setup(message):
         withdraw_ltc(message)
     elif message.text == "🚫 Cancel" and message.chat.type != "group" and message.chat.type != "supergroup":
         cancel(message)
+# ------ ================================================================================#
+    elif message.text == exchangeButton:
+        exchange(message)
+    elif message.text == backButton:
+        info(message)
+    elif message.text == mainMenuButton:
+        info(message)
+
 # ------ ================================================================================#
 
 bot.polling()

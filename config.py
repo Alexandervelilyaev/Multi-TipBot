@@ -53,3 +53,25 @@ button3 = "📤 Payout 📤"
 
 # info button
 button4 = "🛡 Info 🛡"
+
+#new menu ===================
+exchangeButton = "♻ Exchange"
+walletButton = "💼 Wallet"
+freetokensButton = "🎊 Free Tokens! 🎉"
+uniREAPButton = "🦄 UniREAP"
+listTokensButton = "🗒 List Tokens"
+groupAdminsButton = "🕹 Group Admins"
+helpButton = "☎ Help"
+aboutButton = "📜 About"
+
+convertButton = "↔ Convert"
+swapButton = "↕ Swap"
+backButton = "🔙 Back"
+mainMenuButton = "🔝 Main Menu"
+
+
+balanceButton = "💰 Balance"
+withdrawButton = "📤 Withdraw"
+depositButton = "📥 Deposit"
+transferButon = "↔ Transfer"
+historyButon = ""
