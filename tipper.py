@@ -992,6 +992,10 @@ def buttons_setup(message):
         wallet(message)
     elif message.text == balanceButton:
         bal(message)
+    elif message.text == depositButton:
+        deposit(message)
+    elif message.text == withdrawButton:
+        withdraw(message)
     elif message.text == backButton:
         info(message)
     elif message.text == mainMenuButton:
