@@ -306,7 +306,6 @@ def wallet_menu():
     btn8 = types.KeyboardButton(onChainAddressButton)
     btn9 = types.KeyboardButton(backButton)
     btn10 = types.KeyboardButton(mainMenuButton)
-    
     markup.add(btn1, btn2)
     markup.add(btn3, btn4, btn5)
     markup.add(btn6, btn7)
@@ -315,10 +314,43 @@ def wallet_menu():
 
     return markup
 
+def help_menu():
+    markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
+    btn1 = types.KeyboardButton(howAirdropButton)
+    btn2 = types.KeyboardButton(howGrabButton)
+    btn3 = types.KeyboardButton(howRainButton)
+    btn4 = types.KeyboardButton(howTipButton)
+    btn5 = types.KeyboardButton(coinsTokensButton)
+    btn6 = types.KeyboardButton(howCheckPriceButton)
+    btn7 = types.KeyboardButton(supportButton)
+    btn8 = types.KeyboardButton(backButton)
+    btn9 = types.KeyboardButton(mainMenuButton)
+    markup.add(btn1, btn2)
+    markup.add(btn3, btn4)
+    markup.add(btn5, btn6)
+    markup.add(btn7)
+    markup.add(btn8, btn9)
+
+    return markup
+
 # exchange ================================================================================#
 def exchange(message):
     try:
         bot.send_message(message.chat.id, "Swap Tokens that are listed with a simple chat command. Transaction-fees are paid for with the existing REAP-Tokens in your wallet, make sure you have enough!", parse_mode="html", reply_markup=exchange_menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
+
+def about(message):
+    try:
+        bot.send_message(message.chat.id, bot_info, parse_mode="html", reply_markup=menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
+
+def _help(message):
+    try:
+        bot.send_message(message.chat.id, "Welcome to REAPit! \nHere are the things you can do:\n\n1. Tip tokens/coins to anyone.\n2. Swap your favourite token with any other token.\n3. Send or Recieve tokens.\n4. Stake and earn REAP daily or weekly.\n5. Grow your community.", parse_mode="html", reply_markup=help_menu())
     except Exception as e:
         print(e)
         bot.send_message(message.chat.id, "Error : "+ str(e))
@@ -996,10 +1028,15 @@ def buttons_setup(message):
         deposit(message)
     elif message.text == withdrawButton:
         withdraw(message)
+    elif message.text == aboutButton:
+        about(message)
+    elif message.text == helpButton:
+        _help(message)
     elif message.text == backButton:
         info(message)
     elif message.text == mainMenuButton:
         info(message)
+    
 
 # ------ ================================================================================#
 
