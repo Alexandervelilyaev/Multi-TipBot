@@ -334,7 +334,7 @@ def wallet(message):
 # balance ================================================================================#
 def bal(message):
     try:
-        bot.send_message(message.chat.id, "💰 <b>Your Wallet Balance :</b>\n💳 <b>BTC :</b> <code>"+ str("{0:.7f}".format(user_btc_bal(message.chat.id))) + " BTC</code>\n💶 <b>LTC :</b> <code>"+ str("{0:.7f}".format(user_ltc_bal(message.chat.id))) +" LTC</code>\n💷 <b>DOGE :</b> <code>" + str("{0:.7f}".format(user_doge_bal(message.chat.id))) +" DOGE </code>", parse_mode="html", reply_markup=menu())
+        bot.send_message(message.chat.id, "💰 <b>Your Wallet Balance :</b>\n💳 <b>BTC :</b> <code>"+ str("{0:.7f}".format(user_btc_bal(message.chat.id))) + " BTC</code>\n💶 <b>LTC :</b> <code>"+ str("{0:.7f}".format(user_ltc_bal(message.chat.id))) +" LTC</code>\n💷 <b>DOGE :</b> <code>" + str("{0:.7f}".format(user_doge_bal(message.chat.id))) +" DOGE </code>", parse_mode="html", reply_markup=wallet_menu())
         lll = [20,40,28,24,35,13,24,16,30]
         x_time = choice(lll)
         time.sleep(x_time)
@@ -438,7 +438,7 @@ def deposit(message):
         btc = user_btc_add(message.chat.id)
         ltc = user_ltc_add(message.chat.id)
         doge = user_doge_add(message.chat.id)
-        bot.send_message(message.chat.id, "🧩 <b>Your Permanent Deposit Wallets : </b>\n\n<b>BTC : </b>[ <code>" + str(btc) + "</code> ]\n<b>LTC : </b>[ <code>" + str(ltc) + "</code> ]\n<b>DOGE : </b>[ <code>" + str(doge) + "</code> ]\n\n<i>You Depsit Will get Reflected Automatically Wait for 5 - 15 min</i>", parse_mode="html", reply_markup=menu())
+        bot.send_message(message.chat.id, "🧩 <b>Your Permanent Deposit Wallets : </b>\n\n<b>BTC : </b>[ <code>" + str(btc) + "</code> ]\n<b>LTC : </b>[ <code>" + str(ltc) + "</code> ]\n<b>DOGE : </b>[ <code>" + str(doge) + "</code> ]\n\n<i>You Depsit Will get Reflected Automatically Wait for 5 - 15 min</i>", parse_mode="html", reply_markup=wallet_menu())
     except Exception as e:
         print(e)
         bot.send_message(message.chat.id, "Error : "+ str(e))
