@@ -294,6 +294,27 @@ def exchange_menu():
 
     return markup
 
+def wallet_menu():
+    markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
+    btn1 = types.KeyboardButton(connectWalletButton)
+    btn2 = types.KeyboardButton(balanceButton)
+    btn3 = types.KeyboardButton(withdrawButton)
+    btn4 = types.KeyboardButton(depositButton)
+    btn5 = types.KeyboardButton(transferButon)
+    btn6 = types.KeyboardButton(historyButon)
+    btn7 = types.KeyboardButton(connectEmailButton)
+    btn8 = types.KeyboardButton(onChainAddressButton)
+    btn9 = types.KeyboardButton(backButton)
+    btn10 = types.KeyboardButton(mainMenuButton)
+    
+    markup.add(btn1, btn2)
+    markup.add(btn3, btn4, btn5)
+    markup.add(btn6, btn7)
+    markup.add(btn8)
+    markup.add(btn9, btn10)
+
+    return markup
+
 # exchange ================================================================================#
 def exchange(message):
     try:
@@ -302,6 +323,13 @@ def exchange(message):
         print(e)
         bot.send_message(message.chat.id, "Error : "+ str(e))
 
+# wallet =================================================================================#
+def wallet(message):
+    try:
+        bot.send_message(message.chat.id, "Bot wallet overview.\n ——————\n Click the buttons for more info & options!", parse_mode="html", reply_markup=wallet_menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
 
 # balance ================================================================================#
 def bal(message):
@@ -960,6 +988,8 @@ def buttons_setup(message):
 # ------ ================================================================================#
     elif message.text == exchangeButton:
         exchange(message)
+    elif message.text == walletButton:
+        wallet(message)
     elif message.text == backButton:
         info(message)
     elif message.text == mainMenuButton:

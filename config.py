@@ -69,9 +69,11 @@ swapButton = "↕ Swap"
 backButton = "🔙 Back"
 mainMenuButton = "🔝 Main Menu"
 
-
+connectWalletButton = "💼 Connect Wallet"
 balanceButton = "💰 Balance"
 withdrawButton = "📤 Withdraw"
 depositButton = "📥 Deposit"
 transferButon = "↔ Transfer"
-historyButon = ""
+historyButon = "📋 History"
+connectEmailButton = "📧 Connect Email"
+onChainAddressButton = "🔗 On-chain address"
