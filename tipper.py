@@ -333,6 +333,24 @@ def help_menu():
 
     return markup
 
+def help_airdrop_menu():
+    markup = types.ReplyKeyboardMarkup(row_width=3,resize_keyboard=True)
+    btn1 = types.KeyboardButton(makeAirdropWithKeywordsButton)
+    btn2 = types.KeyboardButton(makeAirdropWithoutKeywordsButton)
+    btn3 = types.KeyboardButton(createGiveawayButton)
+    btn4 = types.KeyboardButton(makeAirdropInFastButton)
+    btn5 = types.KeyboardButton(addBotToYougGroupButton)
+    btn6 = types.KeyboardButton(backButton)
+    btn7 = types.KeyboardButton(mainMenuButton)
+    markup.add(btn1)
+    markup.add(btn2)
+    markup.add(btn3)
+    markup.add(btn4)
+    markup.add(btn5)
+    markup.add(btn6, btn7)
+
+    return markup
+
 # exchange ================================================================================#
 def exchange(message):
     try:
@@ -351,6 +369,20 @@ def about(message):
 def _help(message):
     try:
         bot.send_message(message.chat.id, "Welcome to REAPit! \nHere are the things you can do:\n\n1. Tip tokens/coins to anyone.\n2. Swap your favourite token with any other token.\n3. Send or Recieve tokens.\n4. Stake and earn REAP daily or weekly.\n5. Grow your community.", parse_mode="html", reply_markup=help_menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
+
+def suppot(message):
+    try:
+        bot.send_message(message.chat.id, "Please proceed to: https://www.reapit.xyz/guide for more info", parse_mode="html", reply_markup=help_menu())
+    except Exception as e:
+        print(e)
+        bot.send_message(message.chat.id, "Error : "+ str(e))
+
+def airdrop(message):
+    try:
+        bot.send_message(message.chat.id, "By making an airdrop, you can send your favorite coins/tokens to more people and boost the activity of the group. It only takes 3 steps to make an airdrop in a group: \n\n 1. Deposit  \nDeposit enough coins/tokens in your account. \nPM me and sent deposit TokenName (E.g. deposit eth). \n\n2. Invite REAPit into the group \nAdd REAPitBot to the group. \n\n3. Send airdrop command in a group \nSend the command to make an airdrop. \nClick the following buttons to know details.", parse_mode="html", reply_markup=help_airdrop_menu())
     except Exception as e:
         print(e)
         bot.send_message(message.chat.id, "Error : "+ str(e))
@@ -1032,6 +1064,10 @@ def buttons_setup(message):
         about(message)
     elif message.text == helpButton:
         _help(message)
+    elif message.text == supportButton:
+        suppot(message)
+    elif message.text == howAirdropButton:
+        airdrop(message)
     elif message.text == backButton:
         info(message)
     elif message.text == mainMenuButton:
