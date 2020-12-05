@@ -990,6 +990,8 @@ def buttons_setup(message):
         exchange(message)
     elif message.text == walletButton:
         wallet(message)
+    elif message.text == balanceButton:
+        bal(message)
     elif message.text == backButton:
         info(message)
     elif message.text == mainMenuButton:
